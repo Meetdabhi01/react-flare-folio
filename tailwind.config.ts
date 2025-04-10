@@ -59,6 +59,10 @@ export default {
 					coral: '#FF6B6B',
 					light: '#F8F9FA',
 					dark: '#333333',
+					blush: '#F8D0D0',
+					mint: '#C7F5E8',
+					lavender: '#E2D6FF',
+					sand: '#F7EDD0'
 				}
 			},
 			borderRadius: {
@@ -108,6 +112,24 @@ export default {
 					'100%': {
 						width: 'var(--progress-width)'
 					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'ripple': {
+					'0%': {
+						transform: 'scale(0)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'scale(2.5)',
+						opacity: '0'
+					}
 				}
 			},
 			animation: {
@@ -115,7 +137,9 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'slide-in': 'slide-in 0.6s ease-out',
-				'progress-fill': 'progress-fill 1.5s ease-out forwards'
+				'progress-fill': 'progress-fill 1.5s ease-out forwards',
+				'float': 'float 3s ease-in-out infinite',
+				'ripple': 'ripple 1s ease-out'
 			}
 		}
 	},

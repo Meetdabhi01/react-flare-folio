@@ -55,11 +55,20 @@
   
   .section-title::after {
     content: "";
-    @apply absolute bottom-0 left-0 h-1 w-2/3 bg-portfolio-purple;
+    @apply absolute bottom-0 left-0 h-1 w-2/3 bg-gradient-to-r from-portfolio-purple to-portfolio-teal;
   }
   
   .navbar-link {
-    @apply px-3 py-2 text-portfolio-dark hover:text-portfolio-purple transition-colors duration-300;
+    @apply px-3 py-2 text-portfolio-dark hover:text-portfolio-purple relative transition-colors duration-300;
+  }
+  
+  .navbar-link::after {
+    content: "";
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-portfolio-purple transition-all duration-300;
+  }
+  
+  .navbar-link:hover::after {
+    @apply w-full;
   }
   
   .btn-primary {
@@ -67,15 +76,15 @@
   }
   
   .btn-secondary {
-    @apply bg-portfolio-teal hover:bg-opacity-90 text-white font-medium py-2.5 px-6 rounded-md transition-all duration-300;
+    @apply bg-portfolio-teal hover:bg-opacity-90 text-white font-medium py-2.5 px-6 rounded-md transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg;
   }
   
   .btn-outline {
-    @apply border-2 border-portfolio-purple text-portfolio-purple hover:bg-portfolio-purple hover:text-white font-medium py-2 px-5 rounded-md transition-all duration-300;
+    @apply border-2 border-portfolio-purple text-portfolio-purple hover:bg-portfolio-purple hover:text-white font-medium py-2 px-5 rounded-md transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg;
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl;
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px];
   }
   
   .form-input {
@@ -87,7 +96,7 @@
   }
   
   .skill-progress {
-    @apply h-full bg-portfolio-purple animate-progress-fill;
+    @apply h-full bg-gradient-to-r from-portfolio-purple to-portfolio-teal animate-progress-fill;
   }
 }
 
@@ -154,4 +163,31 @@
 .hamburger-menu.active span:nth-child(3) {
   bottom: 50%;
   transform: translateY(50%) rotate(-45deg);
+}
+
+/* Custom gradient effects */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-portfolio-purple to-portfolio-teal;
+}
+
+.card-hover-effect:hover {
+  box-shadow: 0 10px 25px -5px rgba(110, 89, 165, 0.1), 0 5px 10px -5px rgba(95, 189, 176, 0.05);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6E59A5;
 }
