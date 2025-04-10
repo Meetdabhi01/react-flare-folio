@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Hero = () => {
