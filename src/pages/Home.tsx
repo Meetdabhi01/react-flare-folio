@@ -58,7 +58,8 @@ const Home = () => {
     // Add hover effect to 3D cards
     const cards = document.querySelectorAll('.hover-3d');
     cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
+      // Fix: Use MouseEvent type instead of Event for proper mouse coordinates
+      card.addEventListener('mousemove', (e: MouseEvent) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -67,11 +68,15 @@ const Home = () => {
         const rotateX = (y - centerY) / 10;
         const rotateY = (centerX - x) / 10;
         
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        // Fix: Ensure card is typed as HTMLElement to access style property
+        const htmlCard = card as HTMLElement;
+        htmlCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
       });
       
       card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        // Fix: Ensure card is typed as HTMLElement to access style property
+        const htmlCard = card as HTMLElement;
+        htmlCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
       });
     });
 
