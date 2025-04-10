@@ -112,6 +112,56 @@
   transform: translateY(0);
 }
 
+/* Enhanced animation classes */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in-left.is-visible,
+.slide-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-fast {
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+.fade-in-fast.is-visible {
+  opacity: 1;
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scale-in.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bounce-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bounce-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Progress bar delayed animations */
 .delay-100 {
   animation-delay: 0.1s;
@@ -127,6 +177,75 @@
 }
 .delay-500 {
   animation-delay: 0.5s;
+}
+
+/* New staggered animation delays */
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+.stagger-4 {
+  transition-delay: 0.4s;
+}
+.stagger-5 {
+  transition-delay: 0.5s;
+}
+
+/* Cool text reveal animation */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-reveal span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
+              opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.text-reveal.is-visible span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 3D hover effect for cards */
+.hover-3d {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.hover-3d:hover {
+  transform: rotateX(2deg) rotateY(2deg) scale(1.01);
+}
+
+/* Shine effect */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.13);
+  transform: rotate(30deg);
+  transition: all 0.6s;
+}
+
+.shine:hover::after {
+  left: 100%;
 }
 
 /* Hamburger menu styles */
@@ -170,8 +289,67 @@
   @apply bg-clip-text text-transparent bg-gradient-to-r from-portfolio-purple to-portfolio-teal;
 }
 
+/* Animated gradient background */
+.animated-gradient {
+  background: linear-gradient(-45deg, #6E59A5, #5FBDB0, #FF6B6B, #F7EDD0);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .card-hover-effect:hover {
   box-shadow: 0 10px 25px -5px rgba(110, 89, 165, 0.1), 0 5px 10px -5px rgba(95, 189, 176, 0.05);
+}
+
+/* Floating animation for elements */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-slow {
+  animation: floating 6s ease-in-out infinite;
+}
+
+.floating-delay {
+  animation: floating 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Pulse animation */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Custom scrollbar */

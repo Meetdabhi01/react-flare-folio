@@ -10,7 +10,7 @@ import Contact from '@/components/home/Contact';
 
 const Home = () => {
   useEffect(() => {
-    // Animation for elements when they come into view
+    // Enhanced animation for elements when they come into view
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -20,17 +20,64 @@ const Home = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Add the is-visible class to trigger animations
           entry.target.classList.add('is-visible');
+          
+          // For text-reveal animations, add is-visible to each letter with delay
+          if (entry.target.classList.contains('text-reveal')) {
+            const spans = entry.target.querySelectorAll('span');
+            spans.forEach((span, index) => {
+              setTimeout(() => {
+                span.style.transitionDelay = `${index * 0.03}s`;
+                span.classList.add('is-visible');
+              }, 50);
+            });
+          }
+          
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    animatedElements.forEach(el => observer.observe(el));
+    // Observe elements with different animation classes
+    const animationClasses = [
+      '.animate-on-scroll', 
+      '.slide-in-left', 
+      '.slide-in-right',
+      '.scale-in',
+      '.bounce-in',
+      '.fade-in-fast',
+      '.text-reveal'
+    ];
+    
+    animationClasses.forEach(className => {
+      const elements = document.querySelectorAll(className);
+      elements.forEach(el => observer.observe(el));
+    });
+
+    // Add hover effect to 3D cards
+    const cards = document.querySelectorAll('.hover-3d');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+      });
+    });
 
     return () => {
-      animatedElements.forEach(el => observer.unobserve(el));
+      // Clean up observers and event listeners
+      observer.disconnect();
     };
   }, []);
 

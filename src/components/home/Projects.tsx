@@ -48,8 +48,8 @@ const Projects = () => {
     <section id="projects" className="py-20 bg-white">
       <div className="section-container">
         <div className="flex justify-between items-end mb-12">
-          <h2 className="section-title animate-on-scroll">Featured Projects</h2>
-          <Link to="/projects" className="hidden md:flex items-center text-portfolio-purple hover:underline">
+          <h2 className="section-title slide-in-left">Featured Projects</h2>
+          <Link to="/projects" className="hidden md:flex items-center text-portfolio-purple hover:underline fade-in-fast">
             <span>View All Projects</span>
             <ArrowRight size={16} className="ml-1" />
           </Link>
@@ -59,8 +59,8 @@ const Projects = () => {
           {featuredProjects.map((project, index) => (
             <div 
               key={project.id} 
-              className="card group hover:translate-y-[-5px] animate-on-scroll"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="card hover-3d shine"
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden h-52">
                 <img 

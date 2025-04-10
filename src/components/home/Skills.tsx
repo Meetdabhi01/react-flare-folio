@@ -27,14 +27,14 @@ const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-gray-50">
       <div className="section-container">
-        <h2 className="section-title text-center mb-16 animate-on-scroll">My Skills</h2>
+        <h2 className="section-title text-center mb-16 slide-in-left">My Skills</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="animate-on-scroll">
+          <div className="slide-in-left stagger-1">
             <h3 className="text-xl font-semibold text-portfolio-purple mb-6">Frontend Development</h3>
             <div className="space-y-5">
               {frontendSkills.map((skill, index) => (
-                <div key={index}>
+                <div key={index} className="fade-in-fast" style={{ transitionDelay: `${index * 0.1}s` }}>
                   <div className="flex justify-between mb-1">
                     <span className="font-medium">{skill.name}</span>
                     <span className="text-sm text-gray-500">{skill.percentage}%</span>
@@ -52,11 +52,11 @@ const Skills = () => {
             </div>
           </div>
           
-          <div className="animate-on-scroll">
+          <div className="slide-in-right stagger-2">
             <h3 className="text-xl font-semibold text-portfolio-teal mb-6">Design Skills</h3>
             <div className="space-y-5">
               {designSkills.map((skill, index) => (
-                <div key={index}>
+                <div key={index} className="fade-in-fast" style={{ transitionDelay: `${index * 0.1}s` }}>
                   <div className="flex justify-between mb-1">
                     <span className="font-medium">{skill.name}</span>
                     <span className="text-sm text-gray-500">{skill.percentage}%</span>
@@ -75,20 +75,20 @@ const Skills = () => {
           </div>
         </div>
         
-        <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 animate-on-scroll">
-          <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 bounce-in stagger-3">
+          <div className="bg-white p-4 rounded-lg shadow-sm text-center hover-3d">
             <div className="text-3xl font-bold text-portfolio-purple">4+</div>
             <div className="text-gray-600 text-sm">Years Experience</div>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+          <div className="bg-white p-4 rounded-lg shadow-sm text-center hover-3d">
             <div className="text-3xl font-bold text-portfolio-teal">50+</div>
             <div className="text-gray-600 text-sm">Projects Completed</div>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+          <div className="bg-white p-4 rounded-lg shadow-sm text-center hover-3d">
             <div className="text-3xl font-bold text-portfolio-coral">30+</div>
             <div className="text-gray-600 text-sm">Happy Clients</div>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow-sm text-center">
+          <div className="bg-white p-4 rounded-lg shadow-sm text-center hover-3d">
             <div className="text-3xl font-bold text-portfolio-purple">15+</div>
             <div className="text-gray-600 text-sm">Awards Won</div>
           </div>
